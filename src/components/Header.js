@@ -1,18 +1,17 @@
 import logo from '../assets/logo.svg';
-// import './style.css';
 
-export const Header = ({ characters, handleOnChange }) => (
+export const Header = ({ characters, handleSearch, handleSubmit }) => (
   <header className="headerArea">
     <div className="header">
       <img src={logo} alt="Marvel logo" height="75" />
     </div>
-    <form className="searchInput">
+    <form className="searchInput" onSubmit={handleSubmit}>
       <input
         className="input"
-        type="search"
-        placeholder="Search character"
+        type="text"
+        placeholder="Search character..."
         value={characters}
-        onChange={handleOnChange}
+        onChange={handleSearch}
       />
     </form>
   </header>
