@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { ComicsAPI } from '../api/ComicsAPI';
-// import './style.css';
 
 export const Comics = () => {
   const [comics, setComics] = useState([]);
@@ -13,9 +12,7 @@ export const Comics = () => {
       .catch((err) => console.log(err));
   }, []);
 
-  // sort by id in descending order
-  let sortedComics = comics.sort((a, b) => b.id - a.id);
-  console.log('filter', sortedComics);
+ comics.sort((a, b) => b.id - a.id);
 
   return (
     <section className="homeContainer">
