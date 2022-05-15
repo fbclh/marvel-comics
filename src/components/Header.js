@@ -9,7 +9,7 @@ export const Header = ({ characters, handleSearch, handleSubmit }) => (
       <input
         className="input"
         type="text"
-        placeholder="Search character..."
+        placeholder="Search character"
         value={characters}
         onChange={handleSearch}
       />

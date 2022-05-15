@@ -1,21 +1,8 @@
-import { useEffect, useState } from 'react';
-import { ComicsAPI } from '../api/ComicsAPI';
-
-export const Comics = () => {
-  const [comics, setComics] = useState([]);
-
-  useEffect(() => {
-    ComicsAPI.get()
-      .then((response) => {
-        setComics(response.data.data.results);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
- comics.sort((a, b) => b.id - a.id);
+export const Comics = ({ comics }) => {
+  comics.sort((a, b) => b.id - a.id);
 
   return (
-    <section className="homeContainer">
+    <section className="listContainer">
       <ul className="characterArea">
         {comics.map((comic) => (
           <li className="characterItem" key={comic.id}>
@@ -30,3 +17,4 @@ export const Comics = () => {
     </section>
   );
 };
+

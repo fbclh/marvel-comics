@@ -1,22 +1,24 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { ComicsAPI } from '../api/ComicsAPI';
 import { Comics } from '../components/Comics';
 import { Header } from '../components/Header';
-import { ComicsAPI } from '../api/ComicsAPI';
 
 export const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchCharacter, setSearchCharacter] = useState('');
   const [characters, setCharacters] = useState('');
 
-  if (searchResults.length === 0) {
-    ComicsAPI.get()
-      .then((response) => {
-        setSearchResults(response.data.data.results);
-      })
-      .catch((err) => console.log(err));
-  } else {
-    console.log('searchResults', searchResults);
-  }
+  useEffect(() => {
+    if (searchResults.length === 0) {
+      ComicsAPI.get()
+        .then((response) => {
+          setSearchResults(response.data.data.results);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      console.log('searchResults', searchResults);
+    }
+  }, [searchResults]);
 
   const handleSearch = (e) => setCharacters(e.target.value);
 
@@ -28,13 +30,9 @@ export const Home = () => {
 
   const displayCharacters = searchCharacter
     ? searchResults.filter((result) =>
-        result.title
-          .toLowerCase()
-          .includes(searchCharacter.toLowerCase()),
+        result.title.toLowerCase().includes(searchCharacter.toLowerCase()),
       )
     : searchResults;
-
-  console.log(displayCharacters);
 
   return (
     <>
@@ -43,9 +41,7 @@ export const Home = () => {
         handleSearch={handleSearch}
         handleSubmit={handleSubmit}
       />
-      <section className="listContainer">
-        <Comics displayCharacters={displayCharacters} />
-      </section>
+      <Comics comics={displayCharacters} />
     </>
   );
 };

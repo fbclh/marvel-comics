@@ -1,9 +1,3 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 :root {
   --red: rgba(238, 49, 49, 0.95);
   --black: #111;
@@ -13,25 +7,8 @@
 
 body {
   background-color: var(--black);
-  font-family: 'Roboto', sans-serif;
 }
 
-.listContainer {
-  display: flex;
-  margin: 160px 100px 100px 100px;
-}
-
-ul li {
-  list-style: none;
-}
-
-.homeContainer {
-  display: flex;
-  flex-direction: column;
-}
-
-/* Components */
-   
 /*
   ========================================
   Header
@@ -60,19 +37,25 @@ ul li {
   border-radius: 4px;
 }
 
-
 /*
   ========================================
   Comics
   ========================================
 */
 
+.listContainer {
+  display: flex;
+  margin: 160px 100px 100px 100px;
+  background-color: var(--black);
+}
+
 .characterArea {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.25rem;
   margin-top: 2rem;
+  padding: 0;
+  gap: 1.25rem;
 }
 
 .characterItem {
@@ -86,11 +69,9 @@ ul li {
   height: 274px;
 }
 
-/*
-  ========================================
-  Characters
-  ========================================
-*/
+ul li {
+  list-style: none;
+}
 
 /*
   ========================================
