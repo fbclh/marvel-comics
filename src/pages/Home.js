@@ -21,7 +21,10 @@ export const Home = () => {
     }
   }, [searchResults]);
 
-  const handleSearch = (e) => setCharacters(e.target.value);
+  const handleOnChange = (e) => {
+    setCharacters(e.target.value);
+    setSearchCharacter(characters);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -39,7 +42,7 @@ export const Home = () => {
     <>
       <Header
         characters={characters}
-        handleSearch={handleSearch}
+        handleOnChange={handleOnChange}
         handleSubmit={handleSubmit}
       />
       <Comics comics={displayCharacters} />

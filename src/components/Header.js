@@ -1,6 +1,6 @@
 import logo from '../assets/logo.svg';
 
-export const Header = ({ characters, handleSearch, handleSubmit }) => (
+export const Header = ({ characters, handleOnChange, handleSubmit }) => (
   <header className="headerArea">
     <div className="header">
       <img src={logo} alt="Marvel logo" height="60" />
@@ -11,7 +11,7 @@ export const Header = ({ characters, handleSearch, handleSubmit }) => (
         type="text"
         placeholder="Search character"
         value={characters}
-        onChange={handleSearch}
+        onChange={handleOnChange}
       />
     </form>
   </header>
