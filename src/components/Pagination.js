@@ -1,11 +1,13 @@
+import styles from '../styles/Pagination.module.css';
+
 export const Pagination = () => (
   <section>
-    <div className="paginationContainer">
+    <div className={styles.container}>
       <div>
-        <button>PREVIOUS PAGE</button>
+        <button className={styles.button}>PREVIOUS PAGE</button>
       </div>
       <div>
-        <button>NEXT PAGE</button>
+        <button className={styles.button}>NEXT PAGE</button>
       </div>
     </div>
   </section>

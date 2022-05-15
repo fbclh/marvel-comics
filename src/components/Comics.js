@@ -1,13 +1,15 @@
+import styles from '../styles/Comics.module.css';
+
 export const Comics = ({ comics }) => {
   comics.sort((a, b) => b.id - a.id);
 
   return (
-    <section className="listContainer">
-      <ul className="characterArea">
+    <section className={styles.section}>
+      <ul className={styles.ul}>
         {comics.map((comic) => (
-          <li className="characterItem" key={comic.id}>
+          <li className={styles.li} key={comic.id}>
             <img
-              className="characterAreaImg"
+              className={styles.img}
               src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
               alt={comic.title}
             />
@@ -17,4 +19,3 @@ export const Comics = ({ comics }) => {
     </section>
   );
 };
-
