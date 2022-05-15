@@ -3,7 +3,7 @@ import logo from '../assets/logo.svg';
 export const Header = ({ characters, handleSearch, handleSubmit }) => (
   <header className="headerArea">
     <div className="header">
-      <img src={logo} alt="Marvel logo" height="75" />
+      <img src={logo} alt="Marvel logo" height="60" />
     </div>
     <form className="searchInput" onSubmit={handleSubmit}>
       <input

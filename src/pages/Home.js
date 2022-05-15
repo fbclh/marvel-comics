@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { ComicsAPI } from '../api/ComicsAPI';
+import { API } from '../api/API';
 import { Comics } from '../components/Comics';
 import { Header } from '../components/Header';
+import { Pagination } from '../components/Pagination';
 
 export const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -10,7 +11,7 @@ export const Home = () => {
 
   useEffect(() => {
     if (searchResults.length === 0) {
-      ComicsAPI.get()
+      API.get()
         .then((response) => {
           setSearchResults(response.data.data.results);
         })
@@ -42,6 +43,7 @@ export const Home = () => {
         handleSubmit={handleSubmit}
       />
       <Comics comics={displayCharacters} />
+      <Pagination />
     </>
   );
 };

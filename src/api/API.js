@@ -6,8 +6,8 @@ const privateKey = '95ce1241b18832779f0e5f8ba3353274e6868e00';
 const timeStamp = Number(new Date());
 const hash = md5(timeStamp + privateKey + publicKey);
 
-export const ComicsAPI = axios.create({
-  baseURL: 'http://gateway.marvel.com/v1/public/comics',
+export const API = axios.create({
+  baseURL: 'https://gateway.marvel.com/v1/public/comics',
   params: {
     ts: timeStamp,
     apikey: publicKey,
