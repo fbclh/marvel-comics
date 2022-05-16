@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { API } from '../api/API';
 import { Comics } from '../components/Comics';
 import { Header } from '../components/Header';
-import { Pagination } from '../components/Pagination';
+// import { Pagination } from '../components/Pagination';
 
 export const Home = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -46,7 +46,7 @@ export const Home = () => {
         handleSubmit={handleSubmit}
       />
       <Comics comics={displayCharacters} />
-      <Pagination />
+      {/* <Pagination /> */}
     </>
   );
 };
