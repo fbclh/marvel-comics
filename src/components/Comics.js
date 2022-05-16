@@ -15,39 +15,39 @@ export const Comics = ({ comics }) => {
       .catch((err) => console.log(err));
   }, []);
 
-  const usersPerPage = 10;
-  const pagesVisited = pageNumber * usersPerPage;
+  const comicsPerPage = 10;
+  const pagesVisited = pageNumber * comicsPerPage;
 
   const displayComics = paginateComics
-    .slice(pagesVisited, pagesVisited + usersPerPage)
-    .map((user) => {
+    .slice(pagesVisited, pagesVisited + comicsPerPage)
+    .map((paginate) => {
       return (
         <section className={styles.section}>
           <ul className={styles.ul}>
-            {comics.map((comic) => (
-              <li className={styles.li} key={comic.id}>
-                <img
-                  className={styles.img}
-                  src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                  alt={comic.title}
-                />
-              </li>
-            ))}
+            {comics
+              .sort((a, b) => b.id - a.id) // Sort comics in descending order
+              .map((comic) => (
+                <li className={styles.li} key={comic.id}>
+                  <img
+                    className={styles.img}
+                    src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
+                    alt={comic.title}
+                  />
+                </li>
+              ))}
           </ul>
         </section>
       );
     });
 
-  const pageCount = Math.ceil(paginateComics.length / usersPerPage);
+  const pageCount = Math.ceil(paginateComics.length / comicsPerPage);
 
   const handleChangePage = ({ selected }) => {
     setPageNumber(selected);
   };
 
-  comics.sort((a, b) => b.id - a.id);
-
   return (
-    <div className="App">
+    <div className="container">
       {displayComics}
       <ReactPaginate
         previousLabel={'Previous'}
@@ -57,7 +57,7 @@ export const Comics = ({ comics }) => {
         containerClassName={'paginationBttns'}
         previousLinkClassName={'previousBttn'}
         nextLinkClassName={'nextBttn'}
-        // disabledClassName={'paginationDisabled'}
+        disabledClassName={'paginationDisabled'}
         activeClassName={'paginationActive'}
       />
     </div>
