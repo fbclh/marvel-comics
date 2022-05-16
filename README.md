@@ -2,6 +2,8 @@
 
 Marvel Comics is an app that allows the user to scroll through all the comics ever released from newest to oldest, the app also allows users to search for a Marvel character.
 
+![screenshot](src/assets/screenshot.png)
+
 ## Live Demo
 
 [marvel-comics-fbclh.vercel.app](https://marvel-comics-fbclh.vercel.app/)
