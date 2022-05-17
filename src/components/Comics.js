@@ -4,7 +4,7 @@ import { API } from '../api/API';
 import styles from '../styles/Comics.module.css';
 
 export const Comics = ({ comics }) => {
-  const [paginateComics, setPaginate] = useState([].slice(0, 50));
+  const [paginateComics, setPaginate] = useState([].slice(0, 100));
   const [pageNumber, setPageNumber] = useState(0);
 
   useEffect(() => {
@@ -18,42 +18,37 @@ export const Comics = ({ comics }) => {
   const comicsPerPage = 10;
   const pagesVisited = pageNumber * comicsPerPage;
 
-  const displayComics = paginateComics
-    .slice(pagesVisited, pagesVisited + comicsPerPage)
-    .map((paginate) => {
-      return (
-        <section className={styles.section}>
-          <ul className={styles.ul}>
-            {comics
-              .sort((a, b) => b.id - a.id) // Sort comics in descending order
-              .map((comic) => (
-                <li className={styles.li} key={comic.id}>
-                  <img
-                    className={styles.img}
-                    src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                    alt={comic.title}
-                  />
-                </li>
-              ))}
-          </ul>
-        </section>
-      );
-    });
-
   const pageCount = Math.ceil(paginateComics.length / comicsPerPage);
 
-  const handleChangePage = ({ selected }) => {
+  const displayComics = paginateComics
+    .slice(pagesVisited, pagesVisited + comicsPerPage)
+    .map((paginate) => (
+      <section className={styles.section}>
+      <ul className={styles.ul}>
+        <li className={styles.li} key={paginate.id}>
+          <img
+            className={styles.img}
+            src={`${paginate.thumbnail.path}.${paginate.thumbnail.extension}`}
+            alt={paginate.title}
+          />
+        </li>
+      </ul>
+      </section>
+    ));
+
+  const handlePageChange = ({ selected }) => {
     setPageNumber(selected);
   };
 
   return (
+
     <div className="container">
       {displayComics}
       <ReactPaginate
         previousLabel={'Previous'}
         nextLabel={'Next'}
         pageCount={pageCount}
-        onPageChange={handleChangePage}
+        onPageChange={handlePageChange}
         containerClassName={'paginationBttns'}
         previousLinkClassName={'previousBttn'}
         nextLinkClassName={'nextBttn'}
